@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Assignment_shopping_shirt.Models.ProductDetails>
+
+@{
+    ViewData["Title"] = "ShowListProductDetails";
+
+}
+@if (ViewBag.A != null)
+{
+    <script>
+        alert('@ViewBag.A');
+    </script>
+}
+<h1>ShowListProductDetails</h1>
+@Html.ActionLink("RollBackProductDetais", "RollBackProductDetais") |
+<p>
+    <a asp-action="CreatProductDetails">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SizeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupplierID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ColorID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvailableQuantity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {      
+           
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @if ((item.AvailableQuantity * item.Products.Price) > 100)
+                    {
+                        <p style="color:orange">@Html.DisplayFor(modelItem => item.Sizes.Name)</p>
+                    }
+                    else
+                    {
+                        <p style="color:black">@Html.DisplayFor(modelItem => item.Sizes.Name)</p>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Suppliers.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Colors.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AvailableQuantity)
+                </td>
+                <td>
+                    @Html.ActionLink("RemoveProductDetails", "RemoveProductDetails", new {  id=item.Id  }) |
+                    @Html.ActionLink("UpdateProductDetails", "UpdateProductDetails", new {  id=item.Id  }) |
+                    @*  @Html.ActionLink("Delete", "DeleteProduct", new {  id=item.Id  })*@
+                    <a href="@Url.Action("DeleteProduct","Home",new {id=item.Id})">Xóa sản phẩm</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

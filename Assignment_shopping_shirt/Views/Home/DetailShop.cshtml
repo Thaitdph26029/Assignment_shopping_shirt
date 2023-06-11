@@ -1,0 +1,392 @@
+﻿@model Assignment_shopping_shirt.Models.Product
+
+@{
+    ViewData["Title"] = "DetailShop";
+
+}
+
+
+
+<div>
+    <nav class="container">
+
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-4">
+                <!-- Slideshow container -->
+                <img src="/images/@Html.DisplayFor(model => model.Image)" alt="" style="width: 100%" />
+                <br />
+
+                <!-- The dots/circles -->
+                <div style="text-align: center">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <form asp-action="AddToCart">
+                <b> @Html.DisplayFor(model => model.Name)</b>
+                <br />
+                <br />
+                   
+                <span id="maudo" style="font-size: 40px"> @Html.DisplayFor(model => model.Price)</span>
+
+                @*  &emsp;  Số lượng: @Html.DisplayFor(model => model.AvailableQuantity)
+                <p> @Html.DisplayFor(model => model.Suppliers.Name)</p>
+                <p> @Html.DisplayFor(model => model.Colors.Name)</p>*@
+                <br /><br />
+
+                <p>Kích thước</p>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            @*<div class="col-md-2">
+                            <input type="button" value="S" style="width: 240%" />
+                            </div>
+                            <div class="col-md-2">
+                            <input type="button" value="M" width="50px" height="50px" />
+                            </div>
+                            <div class="col-md-2">
+                            <input type="button" value="L" style="width: 230%" />
+                            </div>*@
+                            @* <div class="form-group">
+
+                            <label for="ColorID">Color</label>
+                            @Html.DropDownListFor(null, ViewBag.color as SelectList, "Select a color", new { @class = "form-control" })
+                            </div>*@
+                            <div class="mb-3 row" style=" font-size: 13pt;">
+                                <label class="col-sm-2 col-form-label">Màu sắc</label>
+                                <div class="col-sm-10">
+
+                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                        @foreach (var a in ViewBag.color)
+                                        {
+                                                <input type="radio" class="btn-check" name="ColorID" id="@a.ID" value="@a.ID">
+                                                <label class="btn btn-outline-primary" for="@a.ID">@a.Name</label>
+                                        }
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="mb-3 row" style=" font-size: 13pt;">
+                                <label class="col-sm-2 col-form-label">Size</label>
+                                <div class="col-sm-10">
+
+                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                        @foreach (var a in ViewBag.size)
+                                        {
+                                                <input type="radio" class="btn-check" name="SizeID" id="@a.ID" value="@a.ID">
+                                                <label class="btn btn-outline-primary" for="@a.ID">@a.Name</label>
+                                        }
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+
+                <div>
+                    <p>Số lượng</p>
+                    <div class="form-group">
+                        <div class="row">
+
+                            <div class="col-md-2">
+                                @*  //<input type="button" class="btn" id="down" value="-" onclick="down('0')" style="width: 100%" />*@
+                                <button id="down" class="btn btn-default" onclick="down('1')">Trừ</button>
+                                @* <input type="button" id="down" value="+" onclick="down('1')" style="width: 100%" />*@
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <input type="text"
+                                           id="quantity"
+                                           name="quantity"
+                                           value="1"
+                                           max="100"
+                                           style="width: 100%; text-align: center" />
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                @*  @{
+                                int a = @Html.DisplayFor(model => model.ProductDetails.)
+                                }*@
+                                <input type="button" id="up" value="+" data-max="10" style="width: 100%" />
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                   
+                        <div class="col-md-5">
+                            <input name="product" value="@Html.DisplayFor(model => model.Id)" style="width: 100%" placeholder="@Html.DisplayFor(model => model.Id)" hidden="true" />
+                            <div class="mb-3">
+                                <input type="text"
+                                       id="quantity1"
+                                       name="quantity1"
+                                       value="1"
+                                       hidden="true"
+                                       style="width: 100%; text-align: center" />
+                            </div>
+                            <button class="submit"
+                                    style="width: 130%; height: 80%; text-align: center">
+                                <i class="fa fa fa-cart-plus"
+                                   style="width: 100%; margin-bottom: 15px">Thêm Giỏ hàng</i>
+                            </button>
+
+                        </div>
+
+                </div>
+                </form>
+            </div>
+
+          
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <center>
+                    <h5>TIẾP ĐÓN</h5>
+                    <p>Được phục vụ Quý Khách hàng là niềm vinh dự đối với chúng tôi.</p>
+                </center>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="https://theme.hstatic.net/200000305259/1000963148/14/icon-service-1.png?v=162"
+                             alt=""
+                             style="width: 100%; margin-top: 240%" />
+                    </div>
+                    <div class="col-md-8">
+                        <p style="font-size: 15px"><b>GIAO HÀNG TOÀN QUỐC</b></p>
+                        <p style="font-size: 13px">
+                            GIAO HÀNG TOÀN QUỐC Thời gian giao hàng linh động từ 3 - 4 - 5 ngày
+                            tùy khu vực, đôi khi sẽ nhanh hơn hoặc chậm hơn. Mong Quý Khách hàng
+                            thông cảm và cố gắng đợi hàng giúp shop.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="https://theme.hstatic.net/200000305259/1000963148/14/icon-service-2.png?v=162"
+                             alt=""
+                             style="width: 100%; margin-top: 180%" />
+                    </div>
+                    <div class="col-md-8">
+                        <p style="font-size: 15px"><b>CHÍNH SÁCH ĐỔI TRẢ HÀNG</b></p>
+                        <p style="font-size: 13px">
+                            Sản phẩm được phép đổi hàng trong vòng 36h nếu phát sinh lỗi từ nhà
+                            sản xuất (Yêu cầu: hình ảnh phần bị lỗi rõ nét, chi tiết và đầy đủ).
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="https://theme.hstatic.net/200000305259/1000963148/14/icon-service-3.png?v=162"
+                             alt=""
+                             style="width: 100%; margin-top: 200%" />
+                    </div>
+                    <div class="col-md-8">
+                        <p style="font-size: 15px">
+                            <b>GIAO HÀNG NHẬN TIỀN VÀ KIỂM KÊ ĐƠN HÀNG</b>
+                        </p>
+                        <p style="font-size: 13px">
+                            GIAO HÀNG NHẬN TIỀN VÀ KIỂM KÊ ĐƠN HÀNG Được phép kiểm hàng trước
+                            khi thanh toán.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="https://theme.hstatic.net/200000305259/1000963148/14/icon-service-4.png?v=162"
+                             alt=""
+                             style="width: 80%; margin-top: 120%" />
+                    </div>
+                    <div class="col-md-8">
+                        <p style="font-size: 15px">
+                            <b>ĐẶT HÀNG ONLINE VÀ KIỂM TRA ĐƠN HÀNG VUI LÒNG LIÊN HỆ</b>
+                        </p>
+                        <p style="font-size: 13px">037 335 7405</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Mô tả sản phẩm</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#" style="text-decoration:none">Bình luận</a>
+                        </li>
+                        <div class="container">
+                            <br />
+                            <p>• Thông tin sản phẩm:</p>
+                            <p>DEVIL T-SHIRT</p>
+                            <p>HOẠ TIẾT: IN LỤA U.S.A INK</p>
+                            <p>
+                                COLOR: BLACK / WHITE / DARK GREEN / DARK BROW / DARK GREY / RED
+                            </p>
+                            <p>SIZE: M / L / XL</p>
+                            <p>MATERIAL: PREMIUM COTTON.</p>
+                            <img src="https://file.hstatic.net/200000305259/file/vgc-tee_size_chart_2022-01_e6e837f2101f457388dae14a5b691e25_master.jpg" alt="" style="width: 100%" />
+                        </div>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <div class="text1">
+                        <h6 style="vertical-align: middle"><p>Sản phẩm liên quan</p></h6>
+                    </div>
+                    <div class="lienket">
+                        <a href="" style="text-decoration:none">
+                            <div class="row lienket">
+                                <div class="col-md-4">
+                                    <img src="https://product.hstatic.net/200000305259/product/new_v67_fred_5-01_a2588c48f7c6422c814e391997248ee8_compact.jpg" alt="" style="width: 100%" />
+                                </div>
+                                <div class="col-md-8">
+                                    <p>HOROSCOPE T-SHIRT/DARK GREY</p>
+                                    <br />
+                                    <p style="color: red; font-size: 18px">
+                                        69,000 <sup>đ</sup>&emsp;&emsp;&emsp; &emsp;&emsp;<del style="color: black">420,000</del><sup style="color: black">đ</sup>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <br />
+                    <div class="lienket">
+                        <a href="" style="text-decoration:none">
+                            <div class="row lienket">
+                                <div class="col-md-4">
+                                    <img src="https://product.hstatic.net/200000305259/product/new_v67_fred_5-01_a2588c48f7c6422c814e391997248ee8_compact.jpg" alt="" style="width: 100%" />
+                                </div>
+                                <div class="col-md-8">
+                                    <p>HOROSCOPE T-SHIRT/DARK GREY</p>
+                                    <br />
+                                    <p style="color: red; font-size: 18px">
+                                        69,000 <sup>đ</sup>&emsp;&emsp;&emsp; &emsp;&emsp;<del style="color: black">420,000</del><sup style="color: black">đ</sup>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <br />
+                    <div class="lienket" style="text-decoration:none">
+                        <a href="">
+                            <div class="row lienket">
+                                <div class="col-md-4">
+                                    <img src="https://product.hstatic.net/200000305259/product/new_v67_fred_5-01_a2588c48f7c6422c814e391997248ee8_compact.jpg" alt="" style="width: 100%" />
+                                </div>
+                                <div class="col-md-8">
+                                    <p>HOROSCOPE T-SHIRT/DARK GREY</p>
+                                    <br />
+                                    <p style="color: red; font-size: 18px">
+                                        69,000 <sup>đ</sup>&emsp;&emsp;&emsp; &emsp;&emsp;<del style="color: black">420,000</del><sup style="color: black">đ</sup>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <br />
+                    <div class="lienket">
+                        <a href="" style="text-decoration:none">
+                            <div class="row lienket">
+                                <div class="col-md-4">
+                                    <img src="https://product.hstatic.net/200000305259/product/new_v67_fred_5-01_a2588c48f7c6422c814e391997248ee8_compact.jpg" alt="" style="width: 100%" />
+                                </div>
+                                <div class="col-md-8">
+                                    <p>HOROSCOPE T-SHIRT/DARK GREY</p>
+                                    <br />
+                                    <p style="color: red; font-size: 18px">
+                                        69,000 <sup>đ</sup>&emsp;&emsp;&emsp; &emsp;&emsp;<del style="color: black">420,000</del><sup style="color: black">đ</sup>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <br />
+                    <div class="card">
+                        <img src="https://theme.hstatic.net/200000305259/1000963148/14/banner_product_1_grande.jpg?v=162" alt="Avatar" style="width: 100%" />
+                    </div>
+                    <br />
+                    <div class="card">
+                        <img src="https://theme.hstatic.net/200000305259/1000963148/14/banner_product_2_grande.jpg?v=162.png" alt="Avatar" style="width: 100%" />
+                    </div>
+                    <br />
+                    <div class="card">
+                        <img src="https://theme.hstatic.net/200000305259/1000963148/14/banner_product_3_grande.jpg?v=162" alt="Avatar" style="width: 100%" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Tab -->
+    </nav>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<script>
+    //function up(max) {
+    //    document.getElementById("quantity").value = parseInt(document.getElementById("quantity").value) + 1;
+    //    if (document.getElementById("quantity").value >= parseInt(max)) {
+    //        document.getElementById("quantity").value = max;
+    //    }
+    //}
+    //function down(min) {
+    //    document.getElementById("quantity").value = parseInt(document.getElementById("quantity").value) - 1;
+    //    if (document.getElementById("quantity").value <= parseInt(min)) {
+    //        document.getElementById("quantity").value = min;
+    //    }
+    //}
+    var up = document.getElementById("up");
+    up.addEventListener("click", function (event) {
+        document.getElementById("quantity").value = parseInt(document.getElementById("quantity").value) + 1;
+        if (document.getElementById("quantity").value >= parseInt(max)) {
+            document.getElementById("quantity").value = max;
+        }
+    });
+
+    up.addEventListener("click", function (event) {
+
+        document.getElementById("quantity1").value = parseInt(document.getElementById("quantity1").value) + 1;
+        if (document.getElementById("quantity1").value >= parseInt(max)) {
+            document.getElementById("quantity1").value = max;
+        }
+    });
+    var down = document.getElementById("down");
+    down.addEventListener("click", function (event) {
+        document.getElementById("quantity").value = parseInt(document.getElementById("quantity").value) - 1;
+        if (document.getElementById("quantity").value >= parseInt(min)) {
+            document.getElementById("quantity").value = min;
+        }
+    });
+
+    down.addEventListener("click", function (event) {
+        document.getElementById("quantity1").value = parseInt(document.getElementById("quantity1").value) - 1;
+        if (document.getElementById("quantity1").value >= parseInt(min)) {
+            document.getElementById("quantity1").value = min;
+        }
+    });
+</script>
+
+<script>
+    var field1 = document.getElementById("quantity");
+    var field2 = document.getElementById("quantity1");
+
+    field1.addEventListener("input", function () {
+        field2.value = field1.value;
+    });
+
+    field2.addEventListener("input", function () {
+        field1.value = field2.value;
+    });
+</script>

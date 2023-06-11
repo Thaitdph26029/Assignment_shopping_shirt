@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Assignment_shopping_shirt</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Assignment_shopping_shirt.styles.css" asp-append-version="true" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+          crossorigin="anonymous" />
+</head>
+<body>
+
+    <nav class="navbar navbar-light bg-light justify-content-between container" style="background-color:white">
+       @* <a class="navbar-brand" style="font-size: large; color: deepskyblue" href="#">
+            <img src="https://img.icons8.com/fluency/256/ringer-volume.png" alt="Left" width="10%" />0349198240
+        </a>
+
+        <img src="https://theme.hstatic.net/200000305259/1000963148/14/logo.png?v=162" alt="" width="30%" />
+        <a class="navbar-brand" style="font-size: large; color: deepskyblue" href="@Url.Action("ShowCart","Home")">
+            <img src="https://img.icons8.com/arcade/256/shopping-cart--v2.png" alt="Left" width="20%" />
+        </a>
+        <a class="navbar-brand" style="font-size: large; color: deepskyblue" href="@Url.Action("Login","Home")">
+            <img src="https://img.icons8.com/ios/256/user--v1.png" alt="Left" width="20%" style="margin-right" />
+        </a>*@
+        @*<form class="d-flex" role="search">
+        <input class="form-control me-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search" />
+        <button class="btn btn-outline-info" type="submit">Search</button>
+        <a href="login.html"><img src="Anh/user.png" alt="" /></a>
+        <a href="Giohang.html"><img src="Anh/cart.png" alt="" /></a>
+
+        </form>*@
+        <div class="row" >
+            <div class="col-md-2">
+                <center>
+                    <a class="navbar-brand" style="font-size: large; color: deepskyblue" href="#">
+                        <img src="https://img.icons8.com/fluency/256/ringer-volume.png" alt="Left" width="10%" />0349198240
+                    </a>
+                </center>
+            </div>
+            <div class="col-md-8">
+                <center> <img src="https://theme.hstatic.net/200000305259/1000963148/14/logo.png?v=162" alt="" width="35%" /></center>
+            </div>
+            <div class="col-md-2">
+                <center>
+                    <a class="navbar-brand" style="font-size: large; color: deepskyblue" href="@Url.Action("ShowCart","Home")">
+                        <img src="https://img.icons8.com/arcade/256/shopping-cart--v2.png" alt="Left" width="20%" />
+                    </a>
+                    <a class="navbar-brand" style="font-size: large; color: deepskyblue" href="@Url.Action("Login","Home")">
+                        <img src="https://img.icons8.com/plasticine/256/user.png" alt="Left" width="20%" style="margin-right" />
+                    </a>
+                    <a class="navbar-brand" style="font-size: large; color: deepskyblue" href="@Url.Action("Logout","Home")">
+                        <img src="https://img.icons8.com/cute-clipart/256/logout-rounded.png" alt="Left" width="20%" style="margin-right" />
+                    </a>
+                </center>
+            </div>
+        </div>
+
+    </nav>
+
+
+
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                @* <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Assignment_shopping_shirt</a>*@
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <center>
+                    <div class="navbar-collapse@* collapse d-sm-inline-flex justify-content-between*@" style="display:flex;justify-content:center">
+                        <ul class="navbar-nav flex-grow-1">
+
+                            <div class="col-md-12">
+                                <div class="container-fluid container">
+                                    <div class="collapse navbar-collapse container" id="navbarNavAltMarkup">
+                                        <div class="navbar-nav container abcd">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ProductIndex">HOME</a>
+                            </li>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Shop">SHOP</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Manage">MANAGE</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">ABOUT</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Search">Search</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">VERGENCY INSTAGRAM</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Bills">Bills</a>
+                    </div>
+                </center>
+            </div>
+            </div>
+            </div>
+            </ul>
+            </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="text-center text-lg-start bg-light text-muted p-3 mb-2">
+        <!-- Section: Social media -->
+        <!-- Section: Social media -->
+        <!-- Section: Links  -->
+
+        <section class="" style="background-color: #1c2632; color: white">
+            <br /><br />
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-2">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3"></i>THÔNG TIN LIÊN HỆ:
+                        </h6>
+                        <p>
+                            891 Hương Lộ 2, Bình Trị Đông A, Bình Tân, TP. Hồ Chí Minh (AM:
+                            08H30 -> 11H45, PM: 13H30 -> 17H45) KH vui lòng đến đúng khung giờ
+                            mở cửa trên để mua hàng. Vergency chân thành cảm ơn!
+                        </p>
+                        <p>Phone:037 335 7405.</p>
+                        <p>Email:vergency.contact@gmail.com</p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">CHÍNH SÁCH HỖ TRỢ:</h6>
+                        <p>
+                            <a href="#!" class="text-reset">Tìm kiếm</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Giới thiệu</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Chính sách đổi trả</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Chính sách bảo mật</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Điều khoản và dịch vụ</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">THÔNG TIN LIÊN KẾT:</h6>
+                        <p>Hãy kết nối với chúng tôi.</p>
+                        <a href="#"><img src="Anh/facebook.png" alt="" /></a>
+                        <a href="#"><img src="Anh/instagram.png" alt="" /></a>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                        <div class="fb-page"
+                             data-href="https://facebook.com//Vergency.vn"
+                             data-tabs="timeline"
+                             data-width="300"
+                             data-height="120"
+                             data-small-header="false"
+                             data-adapt-container-width="false"
+                             data-hide-cover="false"
+                             data-show-facepile="false">
+                            <blockquote cite="https://facebook.com/Vergency.vn"
+                                        class="fb-xfbml-parse-ignore">
+                                <a href="https://facebook.com/Vergency.vn">Vergency</a>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script async
+            defer
+            crossorigin="anonymous"
+            src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v15.0"
+            nonce="GD5wqgem"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

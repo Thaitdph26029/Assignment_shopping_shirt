@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Assignment_shopping_shirt.Models.BillDetail>
+
+@{
+    ViewData["Title"] = "BillDetail";
+}
+
+<h1>BillDetail</h1>
+
+<p>
+    <a asp-action="CreateBillDetail">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BillID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "EditBillDetail", new { id=item.ID  }) |
+                    @Html.ActionLink("Details", "DetailBillDetail", new { id=item.ID  }) |
+                    @Html.ActionLink("Delete", "DeleteBillDetail", new { id=item.ID  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

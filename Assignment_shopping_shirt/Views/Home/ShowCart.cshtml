@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Assignment_shopping_shirt.Models.CartDetail>
+
+@{
+    ViewData["Title"] = "ShowCart";
+}
+<nav class="container">
+    <div>
+
+
+        <div class="row">
+            <div class="col-md-8">
+                <h4>Giỏ hàng</h4>
+                @{
+                    int total = 0;
+
+                }
+              
+
+                @foreach (var item in ViewBag.CartDetail)
+                {
+                    <div id="giohang">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <a href="detail.html">
+                                    <img src="/images/@item.ProductDetails.Products.Image" alt="" style="width: 85%" />
+                                </a>
+                            </div>
+                            <div class="col-md-9">
+                                <h6 style="margin-top: 1px">
+                                     <b>@item.ProductDetails.Products.Name"</b>
+
+                                  
+                                </h6>
+                                <p>@item.ProductDetails.Sizes.Name</p>
+                                <p>@item.ProductDetails.Products.Price <sup>đ</sup> <del>420,000 </del><sup>đ</sup> </p>
+
+                                <div class="counter">
+                                    <input type="button" value="-" style="width: 30px" />
+                                    <input type="text"
+                                       id="quantity"
+                                       name="quantity"
+                                       value="@item.Quantity"
+                                       min="1"
+                                       class="quantity-selector"
+                                       style="width: 50px; text-align: center" />
+                                    <input type="button" value="+" style="width: 30px" />
+                                    <h6 style="float: right">@(item.Quantity * @item.ProductDetails.Products.Price) <sup>đ</sup></h6>
+                                    @{
+                                        total += (item.Quantity * @item.ProductDetails.Products.Price);
+                                    }
+                                </div>
+                            </div>
+                            <hr />
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-md-1"></div>
+            @*Tong tien*@
+            <div class="col-md-3">
+                <form asp-action="Pay">
+                    <h4>Đơn hàng</h4>
+                    <div class="row" style="height: 35%">
+                        <div class="col-md-12" style="border: 1px solid black">
+                            <br />
+                            <h6 style="float: left"><b>Tổng tiền</b></h6>
+                            <h5 style="float: right; color: #e32124">
+                                @total <sup>đ</sup>
+                            </h5>
+                            <br />
+                            <br />
+                            <center>
+                                <a href="">
+                                    <input type="submit"
+                                           value="THANH TOÁN"
+                                           style="
+                        width: 300px;
+                        height: 45px;
+                        background-color: red;
+                        color: white;
+                        border: none;
+                      " />
+                                </a>
+                            </center>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</nav>

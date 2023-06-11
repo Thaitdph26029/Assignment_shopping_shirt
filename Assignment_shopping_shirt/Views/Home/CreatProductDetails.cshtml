@@ -1,0 +1,57 @@
+﻿@model Assignment_shopping_shirt.Models.ProductDetails
+
+@{
+    ViewData["Title"] = "CreatProductDetails";
+    Guid id = @ViewBag.productid;
+}
+
+
+<h1>CreatProductDetails</h1>
+
+<h4>ProductDetails</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreatProductDetails">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           
+            <div class="form-group">
+                <label for="SizeID">Size</label>
+                @Html.DropDownListFor(model => model.SizeID, ViewBag.size as SelectList, "Select a size", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label for="SupplierID">SupplierID</label>
+                @Html.DropDownListFor(model => model.SupplierID, ViewBag.suppliers as SelectList, "Select a supplier", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+
+                <label for="ColorID">Color</label>
+                @Html.DropDownListFor(model => model.ColorID, ViewBag.color as SelectList, "Select a color", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductId" class="control-label"></label>
+                <input asp-for="ProductId" class="form-control" name="productid" value="@id" hidden="true" />
+                <span asp-validation-for="ProductId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AvailableQuantity" class="control-label"></label>
+                <input asp-for="AvailableQuantity" class="form-control" />
+                <span asp-validation-for="AvailableQuantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @* <a asp-action="ShowListProductDetails">Back to List</a>*@
+    <a href="@Url.Action("ShowListProductDetails","Home",new {id=@id})">Quay về</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

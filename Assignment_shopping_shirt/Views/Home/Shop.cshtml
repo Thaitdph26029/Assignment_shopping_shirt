@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Assignment_shopping_shirt.Models.Product>
+
+@{
+    ViewData["Title"] = "Shop";
+}
+
+
+@*<table class="table">*@
+
+<tbody>
+
+    <nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <!-- Danh mục -->
+                    <p>Danh sách nhóm</p>
+                    <hr />
+                    <div class="lienket">
+                        <a href="#"><p>T-SHIRTS</p></a>
+                        <a href="#"><p>SHIRTS</p></a>
+                        <a href="#"><p>SWEATERS</p></a>
+                        <a href="#"><p>SHORTS</p></a>
+                        <a href="#"><p>BAGS</p></a>
+                        <a href="#"><p>PERFUME</p></a>
+                        <a href="#"><p>JACKET</p></a>
+                        <a href="#"><p>ACCESSORIES</p></a>
+                        <a href="#"><p>POLO</p></a>
+                    </div>
+                    <!-- Danh mục -->
+                </div>
+                <div class="col-md-9">
+                    <nav class="container">
+                        <div class="row">
+                            @foreach (var item in Model)
+                            {
+
+                                <div class="col-md-3">
+                                    <a href="@Url.Action("DetailShop", null, new { Id=item.Id })" style="text-decoration:none;color:black">
+                                        <div class="card">
+
+                                            <img src="/images/@item.Image" alt="Avatar" style="width: 100%" />
+                                            <div class="container">
+                                                <p class=""> @Html.DisplayFor(modelItem => item.Name)</p>
+                                                @* // <h5>@Html.DisplayFor(modelItem => item..Name)</h5>*@
+
+                                                <hr />
+                                                <b class="container" style="color: red">@Html.DisplayFor(modelItem => item.Price)đ</b>
+                                                @* <b style="float: right">@Html.DisplayFor(modelItem => item.AvailableQuantity)</b>*@
+                                            </div>
+
+                                        </div>
+                                        <br>
+                                        <br>
+                                    </a>
+                                </div>
+
+                            }
+                        </div>
+                        <br />
+                        <br />
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+</tbody>
+@*</table>*@

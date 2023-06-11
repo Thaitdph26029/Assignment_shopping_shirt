@@ -1,0 +1,82 @@
+﻿<nav>
+    <div class="container">
+        <center><h3>Đăng nhập</h3></center>
+   <form asp-action="Login">
+
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                            <center>
+                                <img src="Anh/email.png" alt="" style="width: 35%" />
+                            </center>
+                        </span>
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Email"
+                               aria-label="email"
+                               name="users"
+                               aria-describedby="basic-addon1" />
+                    </div>
+                </div>
+            </div>
+
+           @* @if (ViewBag.Message.ToString()=="1")
+            {
+                <script>
+                    alert('Chào mừng bạn');
+                </script>
+            }*@
+           @* @if (ViewBag.LabelText.ToString() == "Tài khoản hoặc mật khẩu sai")
+            {
+                var labelText = ViewBag.LabelText;
+            }*@
+            @{
+                var labelText = ViewBag.LabelText;
+                var labelText1 = ViewBag.LabelText1;
+            }
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                            <center>
+                                <img src="Anh/lock.png" alt="" style="width: 35%" />
+                            </center>
+                        </span>
+                        <input type="Password"
+                               class="form-control"
+                               placeholder="Password"
+                               name="pass"
+                               aria-label="Password"
+                               aria-describedby="basic-addon1" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <center>
+                        <button type="submit"
+                                class="btn btn-outline-success"
+                                style="width: 100%">
+                            Đăng nhập
+                        </button>
+                        <label style="color:red">@labelText</label>
+                        <label style="color:red">@labelText1</label>
+                    </center>
+                </div>
+            </div>
+   </form>
+        <br />
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="lienket">
+                    <a  style="text-decoration: none">Quay về</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
